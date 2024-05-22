@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>IPD Simulator</title>
+    </head>
+    <body>
+        <div id="app">
+            <header>
+              IPD Simulator
+            </header>
+            <pad></pad>
+            <div id="player-select">
+                <h2>Game Info</h2>
+                <form id="player-select-form" onsubmit="return false;">
+                    <div>
+                        Player 1:
+                        <select name="p1" id="p1" autocomplete="off">
+                            <option value="always-cooperate">
+                                Always Cooperate
+                            </option>
+                            <option value="always-defect">Always Defect</option>
+                            <option value="random">Random</option>
+                            <option value="tft">Tit for Tat</option>
+                            <option value="joss">JOSS</option>
+                            <option value="friedman">FRIEDMAN</option>
+                            <option value="tftt">Tit for Two Tats</option>
+                        </select>
+                    </div>
+                    <div>
+                        Player 2:
+                        <select name="p2" id="p2" autocomplete="off">
+                            <option value="always-cooperate">
+                                Always Cooperate
+                            </option>
+                            <option value="always-defect">Always Defect</option>
+                            <option value="random">Random</option>
+                            <option value="tft">Tit for Tat</option>
+                            <option value="joss">JOSS</option>
+                            <option value="friedman">FRIEDMAN</option>
+                            <option value="tftt">Tit for Two Tats</option>
+                        </select>
+                    </div>
+                    <div>
+                        Game Length:
+                        <input
+                            id="game-length"
+                            type="number"
+                            min="1"
+                            max="999"
+                            value="200"
+                            autocomplete="off"
+                            onblur="if (this.value > 999) this.value = 999; if (this.value < 1) this.value = 1; this.value = Math.floor(this.value)"
+                        />
+                        moves
+                    </div>
+                </form>
+            </div>
+            <pad></pad>
+            <div id="game-controls">
+                <div>
+                    <button id="reveal-one">Reveal next move</button>
+                    <button id="reveal-many">
+                        Reveal
+                        <input
+                            id="move-reveal-count"
+                            value="10"
+                            type="number"
+                            min="1"
+                            max="999"
+                            onblur="if (this.value > 999) this.value = 999; if (this.value < 1) this.value = 1; this.value = Math.floor(this.value)"
+                        />
+                        moves
+                    </button>
+                    <button id="reveal-all">Reveal all moves</button>
+                    <button id="reveal-until">Reveal until change</button>
+                </div>
+                <div>
+                  <button id="hide-last">Hide last move</button>
+                  <button id="hide-all">Hide all moves</button>
+                    <button id="rerun">Rerun</button>
+                </div>
+            </div>
+            <pad></pad>
+            <div id="game-table"></div>
+        </div>
+        <script type="module" src="/src/main.ts"></script>
+    </body>
+</html>
